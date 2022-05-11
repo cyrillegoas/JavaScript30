@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Array Cardio 💪💪</title>
+  </head>
+  <body>
+    <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+    <script>
+      // ## Array Cardio Day 2
+
+      const people = [
+        { name: "Wes", year: 1988 },
+        { name: "Kait", year: 1986 },
+        { name: "Irv", year: 1970 },
+        { name: "Lux", year: 2015 },
+      ];
+
+      const comments = [
+        { text: "Love this!", id: 523423 },
+        { text: "Super good", id: 823423 },
+        { text: "You are the best", id: 2039842 },
+        { text: "Ramen is my fav food ever", id: 123523 },
+        { text: "Nice Nice Nice!", id: 542328 },
+      ];
+
+      const date = new Date();
+      const year = date.getFullYear();
+
+      // is at least one person 19 or older?
+      const isAbove19 = people.some((item) => year - item.year >= 19);
+      console.log("-- is at least one person 19 or older? --");
+      console.log(isAbove19);
+
+      // is everyone 19 or older?
+      const isEveryoneAbove19 = people.every((item) => year - item.year >= 19);
+      console.log("-- is everyone 19 or older? --");
+      console.log(isEveryoneAbove19);
+
+      // find the comment with the ID of 823423
+      function findCommentByID(id) {
+        return comments.find((comment) => comment.id === id);
+      }
+      const comment = findCommentByID(823423);
+      console.log("-- find the comment with the ID of 823423 --");
+      console.log(comment);
+
+      // delete the comment with the ID of 823423
+      function findCommentIndexByID(id) {
+        return comments.findIndex((comment) => comment.id === id);
+      }
+
+      function deleteCommentByID(id) {
+        const index = findCommentIndexByID(id);
+        return [...comments.slice(0, index), ...comments.slice(index + 1)];
+      }
+
+      console.log("-- delete the comment with the ID of 823423 --");
+      console.log("comments before", comments);
+      const updatedComments = deleteCommentByID(823423);
+      console.log("comments after", updatedComments);
+    </script>
+  </body>
+</html>
